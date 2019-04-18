@@ -6,9 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +19,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cmpe277.petMap.R;
@@ -38,6 +43,10 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,11 +66,40 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private MapView mapView;
     private GoogleMap googleMap;
     private GoogleApiClient googleApiClient;
+    private TextView txtName;
+    private TextView txtBreed;
+    private ImageView imageView;
+
+    private String id = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        txtName = (TextView) findViewById(R.id.txtName);
+        txtBreed = (TextView) findViewById(R.id.txtBreed);
+        imageView = (ImageView) findViewById(R.id.imageView);
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras == null) {
+                id = null;
+            }
+
+            else {
+                id = extras.getString("id");
+                Log.d("id: ", id);
+                try {
+                    JSONObject jsonObject = new JSONObject(id);
+                    txtName.setText(jsonObject.getString("name"));
+                    DownloadImageWithURLTask downloadImageWithURLTask = new DownloadImageWithURLTask(imageView);
+                    downloadImageWithURLTask.execute(jsonObject.getString("image"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
         if (isGooglePlayServicesAvailable(MapActivity.this)) {
 
@@ -331,6 +369,29 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         break;
                 }
                 break;
+        }
+    }
+
+    private class DownloadImageWithURLTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+        public DownloadImageWithURLTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String pathToFile = urls[0];
+            Bitmap bitmap = null;
+            try {
+                InputStream in = new java.net.URL(pathToFile).openStream();
+                bitmap = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
         }
     }
 }
