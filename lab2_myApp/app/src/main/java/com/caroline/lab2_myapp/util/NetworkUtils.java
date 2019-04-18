@@ -105,6 +105,33 @@ public class NetworkUtils {
             return null;
         }
     }
+    public static URL buildUrlWithType(String type){
+        Uri fetchAnimalsUri = Uri.parse(GET_ANIMALS).buildUpon().appendQueryParameter("type",type).appendQueryParameter("page","1").build();
+        try{
+            URL fetchAnimalsUrl = new URL(fetchAnimalsUri.toString());
+            return fetchAnimalsUrl;
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static String getResponseFromCustomHttpUrl(URL url) throws IOException {
+
+        OkHttpClient client = new OkHttpClient();
+        String auth = ("Bearer " + accessToken);
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .addHeader("content-type", "application/x-www-form-urlencoded")
+                .addHeader("authorization", auth)
+                .addHeader("cache-control", "no-cache")
+                .addHeader("postman-token", "52b90249-f5da-b1d8-c00a-873a59fae506")
+                .build();
+        Log.d("URL", request.toString());
+        Response response = client.newCall(request).execute();
+
+        return response.body().string();
+    }
 
     /**
      * This method returns the entire result from the HTTP response.

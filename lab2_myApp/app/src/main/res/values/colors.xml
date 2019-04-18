@@ -7,4 +7,7 @@
     <color name="colorAccent">#1985A1</color>
     <color name="colorRecyclerViewPrimary">#FFFFFF</color>
     <color name="white1">#FFFFFF</color>
+    <color name="startblue">#09c6df</color>
+    <color name="endblue">#0bcce6</color>
+    <color name="graylight">#fafafa</color>
 </resources>

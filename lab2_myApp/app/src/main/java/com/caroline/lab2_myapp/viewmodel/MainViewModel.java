@@ -30,4 +30,8 @@ public class MainViewModel extends AndroidViewModel {
     public void deleteAllData() {
         mRepository.deleteAllPets();
     }
+
+    public void addPetsByType(String type) {
+        mRepository.addPetsOfType(type);
+    }
 }

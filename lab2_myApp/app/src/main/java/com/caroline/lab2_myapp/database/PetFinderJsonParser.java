@@ -49,9 +49,14 @@ class PetFinderJsonParser {
         long id = petJson.getLong("id");
         String name = petJson.getString("name");
         String date = petJson.getString("published_at");
-        String image = petJson.getJSONArray("photos").getJSONObject(0).getString("large");
-        image = image.replaceAll("\\\\","");
-        Log.d("Image ",image);
+        String image = null;
+        if(petJson.getJSONArray("photos").length()>0) {
+            image = petJson.getJSONArray("photos").getJSONObject(0).getString("large");
+
+            image = image.replaceAll("\\\\", "");
+            Log.d("Image ",image);
+        }
+
 
 
         // Create the weather entry object

@@ -8,11 +8,25 @@
     tools:context=".PetDetailsActivity"
     tools:showIn="@layout/activity_pet_details">
 
-    <TextView
-        android:id="@+id/pet_detail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
 </android.support.v4.widget.NestedScrollView>

@@ -1,6 +1,7 @@
 package com.caroline.lab2_myapp.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -11,12 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.caroline.lab2_myapp.PetDetailsActivity;
 import com.caroline.lab2_myapp.R;
 import com.caroline.lab2_myapp.database.petEntity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -25,6 +30,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+
 
 public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
 
@@ -32,13 +40,21 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
     RecyclerView mRecyclerView;
 
     private final List<petEntity> mPets;
+    private final OnItemClickListener listener;
 
     public PetAdapter(List<petEntity> mPets, Context mContext) {
         this.mPets = mPets;
         this.mContext = mContext;
+        this.listener = new OnItemClickListener();
     }
 
     private final Context mContext;
+
+    class OnItemClickListener {
+        void onItemClick(petEntity pet){
+            Toast.makeText(mContext,pet.getName()+" was clicked",Toast.LENGTH_SHORT);
+        }
+    }
 
     @NonNull
     @Override
@@ -103,6 +119,17 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+        }
+        @OnClick(R.id.imageViewPost) void makeToast(){
+
+            Toast.makeText(mContext,mPets.get(getAdapterPosition()).getName()+" was clicked!",Toast.LENGTH_SHORT).show();
+            petEntity selectedPet = mPets.get(getAdapterPosition());
+            Intent intent = new Intent(mContext, PetDetailsActivity.class);
+            intent.putExtra("name", selectedPet.getName());
+
+            intent.putExtra("image", selectedPet.getImage());
+
+            mContext.startActivity(intent);
         }
     }
 }

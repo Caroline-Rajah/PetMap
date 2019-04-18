@@ -51,7 +51,18 @@ public class AppRepository {
         });
     }
 
+    public void addPetsOfType(String type){
+        mPetFinderNetworkDataSource =  PetFinderNetworkDataSource.getInstance(mContext,mExecutors);
+        mPetFinderNetworkDataSource.fetchAnimalsByType(type);
+        mPets2 = mPetFinderNetworkDataSource.getPets();
 
+        mPets2.observeForever(myNewPets->{
+            mExecutors.diskIO().execute(()->{
+                deleteOldData();
+                mPetDao.insertAll(Arrays.asList(myNewPets));
+            });
+        });
+    }
 
     private void deleteOldData() {
         mPetDao.deleteAll();
