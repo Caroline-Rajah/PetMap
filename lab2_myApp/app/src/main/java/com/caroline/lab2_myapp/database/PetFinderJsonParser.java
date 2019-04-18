@@ -49,7 +49,7 @@ class PetFinderJsonParser {
         long id = petJson.getLong("id");
         String name = petJson.getString("name");
         String date = petJson.getString("published_at");
-        String image = petJson.getString("full");
+        String image = petJson.getJSONArray("photos").getJSONObject(0).getString("large");
         image = image.replaceAll("\\\\","");
         Log.d("Image ",image);
 

@@ -116,16 +116,16 @@ public class NetworkUtils {
     public static String getResponseFromHttpUrl(URL url,String token) throws IOException {
 
         OkHttpClient client = new OkHttpClient();
-
+        String auth = ("Bearer "+accessToken);
         Request request = new Request.Builder()
                 .url("https://api.petfinder.com/v2/animals?type=dog&page=2")
                 .get()
                 .addHeader("content-type", "application/x-www-form-urlencoded")
-                .addHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjE0Y2VmZTc4ODFhMWRlNzIxNjM0ZGQ0OTJlNzIyMDA3NzU1NDNkM2Y0ZjMwYTFhZGQ0OWViMTQ4MzBiZmVlYmFmN2FmZmIzZWRiNDIzOTZiIn0.eyJhdWQiOiJ4RHl6MHBmZXZtWkFTTnp0eERlaVRxendPSnY2UEx5a2NxdkFadmFtOFpmSDBCZVpubSIsImp0aSI6IjE0Y2VmZTc4ODFhMWRlNzIxNjM0ZGQ0OTJlNzIyMDA3NzU1NDNkM2Y0ZjMwYTFhZGQ0OWViMTQ4MzBiZmVlYmFmN2FmZmIzZWRiNDIzOTZiIiwiaWF0IjoxNTU1NTM0Mjg0LCJuYmYiOjE1NTU1MzQyODQsImV4cCI6MTU1NTUzNzg4NCwic3ViIjoiIiwic2NvcGVzIjpbXX0.K1PWYBkuKQW-42THGYQw0qF1bFY5s5Bcy2OKPqJ8vzlCvDGgw56HTgKUZaLLnp6kLDS5bNVLFFS2sxADNaO0hrMzJFJhlJu-NXKfyMV25sGBazrim1fond04xUDKkt9iR5rA29xlDXWBaWCcmqO2VGrIvEkVqEm4c7RCQuTQS9jYcd-jcw-zRxLA6SKhZIqj7lLV9JWFynvr8Jk9wAJyi0F5XYHu7etYo10986XQPJy1XRAEU304tnxsmDReW5V06MlGu8NMhtm3RIjlNxRCF-OjRRYb7O4ziZbESOSKowpcmtgoOIhosU6THbYW0LGt2Pa3XGzpCA70q0xLdtDZ_w")
+                .addHeader("authorization", auth)
                 .addHeader("cache-control", "no-cache")
                 .addHeader("postman-token", "52b90249-f5da-b1d8-c00a-873a59fae506")
                 .build();
-
+        Log.d("URL",request.toString());
         Response response = client.newCall(request).execute();
 
         return response.body().string();

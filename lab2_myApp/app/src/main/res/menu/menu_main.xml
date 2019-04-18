@@ -2,6 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.caroline.lab2_myapp.MainActivity">
+
+    <item
+        android:id="@+id/actionProfile"
+        android:orderInCategory="300"
+        android:title="Profile"
+        android:icon="@drawable/camera"
+        app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/action_add_sample"
         android:orderInCategory="100"

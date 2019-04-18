@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
-    @OnClick(R.id.fab)
+    //@OnClick(R.id.fab)
     void fabClickHandler(){
         Intent intent = new Intent(this,AddPetActivity.class);
         startActivity(intent);
@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         ButterKnife.bind(this);
         initRecyclerView();
