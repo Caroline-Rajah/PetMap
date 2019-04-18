@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="90"
+            android:fontFamily="@font/montserrat_black"
+            android:textSize="16sp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:text="dhruwill" />
+
+        <ImageButton
+            android:id="@+id/imgBtnOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight="10"
+            android:padding="0dp"
+            android:background="@color/white"
+            android:scaleType="center"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            app:srcCompat="@drawable/options" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewPost"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:scaleType="centerCrop"
+        android:padding="0dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[3]" />
+
+    <TextView
+        android:id="@+id/txtCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:textSize="14sp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginTop="10dp"
+        android:text="dhruwill Will I be defined by things that could've been? #AlterBridge #MylesKennedy #HardRock #Kashmir" />
+
+    <TextView
+        android:id="@+id/txtComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_thin"
+        android:textSize="14sp"
+        android:textColor="@color/colorPrimaryComplimentary"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:text="View all comments" />
+
+</LinearLayout>

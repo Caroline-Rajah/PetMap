@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Pet Map</string>
+    <string name="action_add_sample">Add Sample Pets</string>
+    <string name="title_activity_pet_details">PetDetailsActivity</string>
+    <string name="large_text">
+        "This Here contains details about the Pet.\n\n"
+
+        "Tinker is a Rat Terrier or Toy Fox Terrier Mix, female. She was born approximately in January 2006."
+        "She weighs 8 lbs. She is crate trained.\n\n"
+        "She’s very affectionate and outgoing, except when it comes to being picked up or walking on a leash.\n"
+        "Currently any situation that calls for her to do either is extremely stressful for her, so training classes will be required for Tinker in her new home."
+        "Compatibility with other dogs depends mostly on their size. Cat compatibility is still being evaluated.\n\n\n"
+        "Their Adoption Process\n"
+        "Additional Adoption Info\n\n"
+        "First, decide on the kind of dog or cat you want (large, small, active, older, puppy, kitten, long hair, short hair, etc.) and find a few pets that fit your criteria on our web site.\n"
+
+        "Then either contact the foster home directly or visit us at our weekly pet fairs.\n"
+
+        "Next a NARF representative will conduct an interview to make sure that the pet of your choice is a good match.\n"
+
+        "The donation for dogs ranges from $200 – $300, and $120 for cats. This donation covers the cost of spaying or neutering, vaccinations, and microchipping. In some cases, a training contract may be required for our dogs with an additional deposit.\n\n"
+        "Go Meet Their Pets\n"
+        "Check out our events page for upcoming events and pet fairs: http://www.narfrescue.org/events/"
+        "More About This Rescue"
+        "The Nike Animal Rescue Foundation (NARF) is a non-profit, all volunteer organization founded in 1985 in San Jose, California."
+        "NARF is dedicated to protecting dogs and cats. We strive to eliminate animal overpopulation through spay and neuter programs and public education."
+        "Our volunteers rescue and shelter cats and dogs in need. We provide medical care and locate quality, permanent homes for these animals. We are also a NO KILL shelter."
+        "The animals are fostered in our volunteer’s home; allowing us to give adopters a more complete background about their personality and how they get along with other animals, children, etc."
+    </string>
+    <string name="title_activity_add_pet"></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_delete_sample">Delete All Pet Data</string>
+</resources>
