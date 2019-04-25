@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.caroline.lab2_myapp.MapActivity;
 import com.caroline.lab2_myapp.PetDetailsActivity;
 import com.caroline.lab2_myapp.R;
 import com.caroline.lab2_myapp.database.petEntity;
@@ -72,6 +73,15 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
         //viewHolder.imageView.setImageDrawable(d);
         DownloadImageWithURLTask downloadTask = new DownloadImageWithURLTask(viewHolder.imageView);
         downloadTask.execute(pet.getImage());
+        viewHolder.textCaption.setText(pet.getDescription());
+        viewHolder.txtComments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, MapActivity.class);
+                intent.putExtra("address",pet.getAddress());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -96,6 +106,9 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
 
         protected Bitmap doInBackground(String... urls) {
             String pathToFile = urls[0];
+            if(pathToFile==null){
+                return null;
+            }
             Bitmap bitmap = null;
             try {
                 InputStream in = new java.net.URL(pathToFile).openStream();
@@ -107,7 +120,9 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
             return bitmap;
         }
         protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
+            if(result!=null) {
+                bmImage.setImageBitmap(result);
+            }
         }
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -116,6 +131,10 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
         TextView txtUserName;
         @BindView(R.id.imageViewPost)
         ImageView imageView;
+        @BindView(R.id.txtComments)
+        TextView txtComments;
+        @BindView(R.id.txtCaption)
+        TextView textCaption;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
@@ -128,7 +147,11 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
             intent.putExtra("name", selectedPet.getName());
 
             intent.putExtra("image", selectedPet.getImage());
-
+            intent.putExtra("gender",selectedPet.getGender());
+            intent.putExtra("age",selectedPet.getAge());
+            intent.putExtra("size",selectedPet.getSize());
+            intent.putExtra("email",selectedPet.getEmail());
+            intent.putExtra("phone",selectedPet.getPhone());
             mContext.startActivity(intent);
         }
     }

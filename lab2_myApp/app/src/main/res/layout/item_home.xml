@@ -55,7 +55,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_marginTop="10dp"
-        android:text="dhruwill Will I be defined by things that could've been? #AlterBridge #MylesKennedy #HardRock #Kashmir" />
+        android:text="Lorem ipsum integer curabitur tempus mauris platea aliquam rhoncus laoreet, etiam imperdiet elit cras adipiscing aenean ante molestie" />
 
     <TextView
         android:id="@+id/txtComments"
@@ -68,6 +68,6 @@
         android:paddingRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
-        android:text="View all comments" />
+        android:text="View location on map" />
 
 </LinearLayout>

@@ -56,11 +56,39 @@ class PetFinderJsonParser {
             image = image.replaceAll("\\\\", "");
             Log.d("Image ",image);
         }
-
-
+        petEntity pet = new petEntity(id,date,name,image);
+        if(petJson.getJSONObject("breeds")!=null && petJson.getJSONObject("breeds").getString("primary")!=null){
+            pet.setBreed(petJson.getJSONObject("breeds").getString("primary"));
+        }
+        if(petJson.getString("age")!=null){
+            pet.setAge(petJson.getString("age"));
+        }
+        pet.setDescription(petJson.getString("description"));
+        pet.setGender(petJson.getString("gender"));
+        pet.setSize(petJson.getString("size"));
+        JSONObject address = petJson.getJSONObject("contact").getJSONObject("address");
+        String add ="";
+        if(address.getString("address1")!=null){
+            add+=address.getString("address1");
+        }
+        if(address.getString("address2")!=null){
+            add+=","+address.getString("address2");
+        }
+        if(address.getString("city")!=null){
+            add+=","+address.getString("city");
+        }
+        if(address.getString("state")!=null){
+            add+=","+address.getString("state");
+        }
+        if(address.getString("postcode")!=null){
+            add+=","+address.getString("postcode");
+        }
+        pet.setAddress(add);
+        pet.setEmail(petJson.getJSONObject("contact").getString("email"));
+        pet.setPhone(petJson.getJSONObject("contact").getString("phone"));
 
         // Create the weather entry object
-        return new petEntity(id,date,name,image);
+        return pet;
     }
 
     private static boolean hasHttpError(JSONObject forecastJson) throws JSONException {

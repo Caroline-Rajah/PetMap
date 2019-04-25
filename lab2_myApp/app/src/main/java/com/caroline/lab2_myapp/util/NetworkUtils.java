@@ -106,7 +106,7 @@ public class NetworkUtils {
         }
     }
     public static URL buildUrlWithType(String type){
-        Uri fetchAnimalsUri = Uri.parse(GET_ANIMALS).buildUpon().appendQueryParameter("type",type).appendQueryParameter("page","1").build();
+        Uri fetchAnimalsUri = Uri.parse(GET_ANIMALS).buildUpon().appendQueryParameter("type",type).appendQueryParameter("page","3").build();
         try{
             URL fetchAnimalsUrl = new URL(fetchAnimalsUri.toString());
             return fetchAnimalsUrl;
@@ -145,7 +145,7 @@ public class NetworkUtils {
         OkHttpClient client = new OkHttpClient();
         String auth = ("Bearer "+accessToken);
         Request request = new Request.Builder()
-                .url("https://api.petfinder.com/v2/animals?type=dog&page=2")
+                .url("https://api.petfinder.com/v2/animals?type=dog&page=1")
                 .get()
                 .addHeader("content-type", "application/x-www-form-urlencoded")
                 .addHeader("authorization", auth)

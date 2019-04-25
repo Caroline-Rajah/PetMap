@@ -20,6 +20,11 @@ public class PetDetailsActivity extends AppCompatActivity {
 
     private TextView petName;
     private ImageView petImage;
+    private TextView petAge;
+    private TextView petGender;
+    private TextView petSize;
+    private TextView email;
+    private TextView phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +32,19 @@ public class PetDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pet_details);
         petName = findViewById(R.id.petName);
         petImage = findViewById(R.id.petImage);
-
+        petAge = findViewById(R.id.age);
+        petGender = findViewById(R.id.gender);
+        petSize = findViewById(R.id.size);
+        email = findViewById(R.id.email);
+        phone = findViewById(R.id.phone);
         Intent intent = getIntent();
-        petName.setText(intent.getStringExtra("name"));
 
+        petName.setText(intent.getStringExtra("name"));
+        petAge.setText(intent.getStringExtra("age"));
+        petGender.setText(intent.getStringExtra("gender"));
+        petSize.setText(intent.getStringExtra("size"));
+        email.setText(intent.getStringExtra("email"));
+        phone.setText(intent.getStringExtra("phone"));
         DownloadImageWithURLTask downloadTask = new DownloadImageWithURLTask(petImage);
         downloadTask.execute(intent.getStringExtra("image"));
 
