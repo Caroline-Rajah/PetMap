@@ -6,10 +6,10 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import com.caroline.lab2_myapp.database.AppDatabase;
-import com.caroline.lab2_myapp.database.petDAO;
-import com.caroline.lab2_myapp.database.petEntity;
-import com.caroline.lab2_myapp.util.SampleData;
+import com.cmpe277.petMap.database.AppDatabase;
+import com.cmpe277.petMap.database.petDAO;
+import com.cmpe277.petMap.database.petEntity;
+import com.cmpe277.petMap.util.SampleData;
 
 import org.junit.After;
 import org.junit.Before;

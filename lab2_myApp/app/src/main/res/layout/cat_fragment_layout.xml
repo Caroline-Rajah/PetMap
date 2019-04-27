@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.caroline.lab2_myapp.ui.CatFragment">
+    tools:context="com.cmpe277.petMap.ui.CatFragment">
 
     <TextView
         android:id="@+id/defaulttext2"

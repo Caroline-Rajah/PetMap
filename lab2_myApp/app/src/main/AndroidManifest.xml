@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.caroline.lab2_myapp">
+    package="com.cmpe277.petMap">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -28,7 +28,7 @@
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.caroline.lab2_myapp.MainActivity" />
+                android:value="com.cmpe277.petMap.MainActivity" />
         </activity>
         <activity
             android:name=".PetDetailsActivity"
@@ -36,7 +36,7 @@
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.caroline.lab2_myapp.MainActivity" />
+                android:value="com.cmpe277.petMap.MainActivity" />
         </activity>
         <activity
             android:name=".MainActivity"
