@@ -1,12 +1,12 @@
-package com.caroline.lab2_myapp.database;
+package com.cmpe277.petMap.database;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.util.Log;
 
-import com.caroline.lab2_myapp.AppExecutors;
-import com.caroline.lab2_myapp.util.NetworkUtils;
-import com.caroline.lab2_myapp.viewmodel.PetFinderResponse;
+import com.cmpe277.petMap.AppExecutors;
+import com.cmpe277.petMap.util.NetworkUtils;
+import com.cmpe277.petMap.viewmodel.PetFinderResponse;
 
 import java.net.URL;
 

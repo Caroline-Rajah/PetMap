@@ -1,4 +1,4 @@
-package com.caroline.lab2_myapp;
+package com.cmpe277.petMap;
 
 import android.Manifest;
 import android.app.Activity;
@@ -43,7 +43,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import static android.support.v4.content.PermissionChecker.PERMISSION_GRANTED;
 

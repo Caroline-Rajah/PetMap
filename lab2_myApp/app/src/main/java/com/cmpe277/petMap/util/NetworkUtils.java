@@ -1,19 +1,14 @@
-package com.caroline.lab2_myapp.util;
+package com.cmpe277.petMap.util;
 
 import android.net.Uri;
-import android.util.Base64;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Scanner;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;

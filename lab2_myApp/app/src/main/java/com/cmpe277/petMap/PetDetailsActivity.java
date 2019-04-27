@@ -1,4 +1,4 @@
-package com.caroline.lab2_myapp;
+package com.cmpe277.petMap;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

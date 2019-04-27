@@ -1,4 +1,4 @@
-package com.caroline.lab2_myapp.database;
+package com.cmpe277.petMap.database;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;

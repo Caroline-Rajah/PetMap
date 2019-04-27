@@ -1,10 +1,9 @@
-package com.caroline.lab2_myapp;
+package com.cmpe277.petMap;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,8 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.caroline.lab2_myapp.ui.CatFragment;
-import com.caroline.lab2_myapp.ui.DogFragment;
+import com.cmpe277.petMap.ui.CatFragment;
+import com.cmpe277.petMap.ui.DogFragment;
 
 
 public class AddPetActivity extends AppCompatActivity {

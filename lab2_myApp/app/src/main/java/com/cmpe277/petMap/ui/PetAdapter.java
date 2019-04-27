@@ -1,4 +1,4 @@
-package com.caroline.lab2_myapp.ui;
+package com.cmpe277.petMap.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,20 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.caroline.lab2_myapp.MapActivity;
-import com.caroline.lab2_myapp.PetDetailsActivity;
-import com.caroline.lab2_myapp.R;
-import com.caroline.lab2_myapp.database.petEntity;
+import com.cmpe277.petMap.MapActivity;
+import com.cmpe277.petMap.PetDetailsActivity;
+import com.cmpe277.petMap.R;
+import com.cmpe277.petMap.database.petEntity;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 

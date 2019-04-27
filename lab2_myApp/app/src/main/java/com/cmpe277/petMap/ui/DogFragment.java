@@ -1,4 +1,4 @@
-package com.caroline.lab2_myapp.ui;
+package com.cmpe277.petMap.ui;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.caroline.lab2_myapp.R;
+import com.cmpe277.petMap.R;
 
 public class DogFragment extends Fragment {
 

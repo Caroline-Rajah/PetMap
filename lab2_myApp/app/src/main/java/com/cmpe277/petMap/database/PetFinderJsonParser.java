@@ -1,8 +1,8 @@
-package com.caroline.lab2_myapp.database;
+package com.cmpe277.petMap.database;
 
 import android.util.Log;
 
-import com.caroline.lab2_myapp.viewmodel.PetFinderResponse;
+import com.cmpe277.petMap.viewmodel.PetFinderResponse;
 
 import org.json.JSONArray;
 import org.json.JSONException;

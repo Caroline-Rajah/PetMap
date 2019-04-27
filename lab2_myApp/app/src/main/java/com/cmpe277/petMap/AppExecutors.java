@@ -1,4 +1,4 @@
-package com.caroline.lab2_myapp;
+package com.cmpe277.petMap;
 
 import android.os.Handler;
 import android.os.Looper;

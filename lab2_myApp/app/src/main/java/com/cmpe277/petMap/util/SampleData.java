@@ -1,4 +1,4 @@
-package com.caroline.lab2_myapp.util;
+package com.cmpe277.petMap.util;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import com.caroline.lab2_myapp.database.*;
+import com.cmpe277.petMap.database.petEntity;
 
 public class SampleData {
     private static final String DOG_1="Alpha";

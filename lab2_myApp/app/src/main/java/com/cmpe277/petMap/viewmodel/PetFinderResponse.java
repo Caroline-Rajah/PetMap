@@ -1,8 +1,8 @@
-package com.caroline.lab2_myapp.viewmodel;
+package com.cmpe277.petMap.viewmodel;
 
-        import android.support.annotation.NonNull;
+import android.support.annotation.NonNull;
 
-        import com.caroline.lab2_myapp.database.petEntity;
+import com.cmpe277.petMap.database.petEntity;
 
 public class PetFinderResponse {
     @NonNull

@@ -1,4 +1,4 @@
-package com.caroline.lab2_myapp.database;
+package com.cmpe277.petMap.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
@@ -13,7 +13,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static volatile AppDatabase instance;
     public static final Object LOCK = new Object();
 
-    public abstract petDAO petDAO();
+    public abstract com.cmpe277.petMap.database.petDAO petDAO();
 
     public static AppDatabase getInstance(Context context) {
         if(instance==null){
