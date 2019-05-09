@@ -12,11 +12,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.cmpe277.petMap.database.petEntity;
 import com.cmpe277.petMap.ui.PetAdapter;
 import com.cmpe277.petMap.viewmodel.MainViewModel;
+import com.google.firebase.FirebaseApp;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.HamButton;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
@@ -34,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+    @BindView(R.id.imageButtonMessage)
+    ImageButton messenger;
+
+    @BindView(R.id.imageButtonSettings)
+    ImageButton addPet;
 
     //@OnClick(R.id.fab)
     void fabClickHandler(){
@@ -53,12 +61,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Toolbar toolbar = findViewById(R.id.toolbar);
+        FirebaseApp.initializeApp(this);
         //setSupportActionBar(toolbar);
         bmb = (BoomMenuButton) findViewById(R.id.bmb);
         bmb.setButtonEnum(ButtonEnum.Ham);
-        bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_3_1);
+        bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_4_1);
         bmb.setButtonPlaceEnum(ButtonPlaceEnum.Vertical);
-        String[] animals = {"Cats","Dogs","Birds"};
+        String[] animals = {"Cats","Dogs","Birds","InApp Pets"};
         //ButtonPlaceEnum.Vertical.buttonNumber();
         //ButtonPlaceEnum.Vertical.buttonNumber();
         for (int i = 0; i < bmb.getPiecePlaceEnum().pieceNumber(); i++) {
@@ -75,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                                 case 1:mViewModel.addPetsByType("dog");
                                 break;
                                 case 2:mViewModel.addPetsByType("bird");
+                                break;
+                                case 3:mViewModel.addInAppPets();
                             }
                         }
                     });
@@ -84,7 +95,20 @@ public class MainActivity extends AppCompatActivity {
         initRecyclerView();
         initViewModel();
 
-
+        messenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MessengerActivity.class);
+                startActivity(intent);
+            }
+        });
+        addPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,EditorActivity.class);
+                startActivity(intent);
+            }
+        });
         /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

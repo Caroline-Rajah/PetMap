@@ -196,6 +196,16 @@ public class NetworkUtils {
         Log.d("Token", accessToken);
         return respose;
     }
+    public static URL buildUrlWithLocation(String location){
+        Uri fetchAnimalsUri = Uri.parse(GET_ANIMALS).buildUpon().appendQueryParameter("location",location).appendQueryParameter("page","1").build();
+        try{
+            URL fetchAnimalsUrl = new URL(fetchAnimalsUri.toString());
+            return fetchAnimalsUrl;
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
         /*HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
         JSONObject names =new JSONObject();

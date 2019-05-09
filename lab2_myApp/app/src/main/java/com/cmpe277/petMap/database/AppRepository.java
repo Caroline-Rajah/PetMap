@@ -22,6 +22,7 @@ public class AppRepository {
     private AppDatabase mDb;
     private Executor executor = Executors.newSingleThreadExecutor();
     private final AppExecutors mExecutors = AppExecutors.getInstance();
+
     private boolean mInitialized = false;
 
 
@@ -40,6 +41,7 @@ public class AppRepository {
         mDb = AppDatabase.getInstance(context);
         mPets = getAllPets();
         mPetDao = mDb.petDAO();
+        //mFirebasePetsNetworkDataSource = new FirebasePetsNetworkDataSource();
         mPetFinderNetworkDataSource =  PetFinderNetworkDataSource.getInstance(mContext,mExecutors);
         mPets2 = mPetFinderNetworkDataSource.getPets();
 
@@ -63,6 +65,11 @@ public class AppRepository {
                 mPetDao.insertAll(Arrays.asList(myNewPets));
             });
         });*/
+    }
+    public void addPetsofLocation(String location){
+        //mPetFinderNetworkDataSource =  PetFinderNetworkDataSource.getInstance(mContext,mExecutors);
+        mPetFinderNetworkDataSource.fetchAnimalsByLocation(location);
+        mPets2 = mPetFinderNetworkDataSource.getPets();
     }
 
     private void deleteOldData() {
@@ -88,5 +95,9 @@ public class AppRepository {
                 mDb.petDAO().deleteAll();
             }
         });
+    }
+
+    public void addInAppPets() {
+       // mPets2 = mFirebasePetsNetworkDataSource.getPets();
     }
 }

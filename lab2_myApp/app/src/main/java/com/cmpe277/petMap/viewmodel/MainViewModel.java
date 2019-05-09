@@ -33,4 +33,10 @@ public class MainViewModel extends AndroidViewModel {
     public void addPetsByType(String type) {
         mRepository.addPetsOfType(type);
     }
+    public void addPetsByLocation(String location){
+        mRepository.addPetsofLocation(location);
+    }
+    public void addInAppPets(){
+        mRepository.addInAppPets();
+    }
 }

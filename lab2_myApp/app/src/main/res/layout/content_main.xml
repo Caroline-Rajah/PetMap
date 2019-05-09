@@ -28,7 +28,7 @@
         android:id="@+id/bottom_panel"
         layout="@layout/footer"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
 
         app:layout_constraintBottom_toBottomOf="parent"

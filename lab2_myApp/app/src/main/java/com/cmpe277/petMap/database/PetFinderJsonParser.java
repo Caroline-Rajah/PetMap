@@ -32,7 +32,7 @@ class PetFinderJsonParser {
         for (int i = 0; i < jsonPetArray.length(); i++) {
             // Get the JSON object representing the day
             JSONObject petJson = jsonPetArray.getJSONObject(i);
-
+            Log.d("PetData",petJson.toString());
             // Create the weather entry object
             //long dateTimeMillis = normalizedUtcStartDay + SunshineDateUtils.DAY_IN_MILLIS * i;
             petEntity pet = fromJsonObj(petJson);

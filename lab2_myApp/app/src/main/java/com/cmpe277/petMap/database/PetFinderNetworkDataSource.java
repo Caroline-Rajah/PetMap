@@ -100,4 +100,22 @@ class PetFinderNetworkDataSource {
             }
         });
     }
+    public void fetchAnimalsByLocation(String location){
+        mExecutors.networkIO().execute(() -> {
+            URL typeUrl = NetworkUtils.buildUrlWithLocation(location);
+            try {
+                String jsonResponse = NetworkUtils.getResponseFromCustomHttpUrl(typeUrl);
+                PetFinderResponse response = new PetFinderJsonParser().parse(jsonResponse);
+                if (response != null && response.getWeatherForecast().length != 0) {
+                    Log.d(LOG_TAG, "JSON not null and has " + response.getWeatherForecast().length
+                            + " values");
+
+                    mDownloadedPets.postValue(response.getWeatherForecast());
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 }

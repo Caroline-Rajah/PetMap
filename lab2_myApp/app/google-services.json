@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "390402513992",
+    "firebase_url": "https://petmap-1a46f.firebaseio.com",
+    "project_id": "petmap-1a46f",
+    "storage_bucket": "petmap-1a46f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390402513992:android:36db388c5b0f80bc",
+        "android_client_info": {
+          "package_name": "com.cmpe277.petMap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390402513992-is0ducbu6qgvbv22erb0amtk6eq3fbi5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cmpe277.petMap",
+            "certificate_hash": "caf379b313613adb0de9b90243d97dd65e60e9d3"
+          }
+        },
+        {
+          "client_id": "390402513992-s76j54snofdjd8bgo0ntur1kpk3uj5fv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_qmlM6hAA-a6-72xzHr_cSDjT0sbuZvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390402513992-s76j54snofdjd8bgo0ntur1kpk3uj5fv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
