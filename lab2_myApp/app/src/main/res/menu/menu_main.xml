@@ -8,6 +8,7 @@
         android:orderInCategory="300"
         android:title="Profile"
         android:icon="@drawable/camera"
+        android:onClick="openCamera"
         app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/action_add_sample"
