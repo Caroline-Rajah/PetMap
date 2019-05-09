@@ -77,9 +77,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        txtName = (TextView) findViewById(R.id.txtName);
-        txtBreed = (TextView) findViewById(R.id.txtBreed);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        txtName = (TextView) findViewById(R.id.txtPetName);
+        imageView = (ImageView) findViewById(R.id.petImageView);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();

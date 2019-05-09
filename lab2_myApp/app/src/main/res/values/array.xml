@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Gender">
+        <item>Gender</item>
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
+
+    <string-array name="Size">
+        <item>Size</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+    <string-array name="Age">
+        <item>Age</item>
+        <item>Baby</item>
+        <item>Young</item>
+        <item>Adult</item>
+        <item>Senior</item>
+    </string-array>
+
+    <string-array name="Species">
+        <item>Species</item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Bird</item>
+    </string-array>
+
+    <string-array name="sortCriteria">
+        <item>Age</item>
+        <item>Size</item>
+        <item>Gender</item>
+    </string-array>
+
+    <string-array name="filterCriteria">
+        <item>Female</item>
+        <item>Male</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+        <item>Baby</item>
+        <item>Young</item>
+        <item>Adult</item>
+        <item>Senior</item>
+    </string-array>
+</resources>

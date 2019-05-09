@@ -45,9 +45,13 @@ public class PetDetailsActivity extends AppCompatActivity {
         petSize.setText(intent.getStringExtra("size"));
         email.setText(intent.getStringExtra("email"));
         phone.setText(intent.getStringExtra("phone"));
-        DownloadImageWithURLTask downloadTask = new DownloadImageWithURLTask(petImage);
-        downloadTask.execute(intent.getStringExtra("image"));
-
+        if (intent.getStringExtra("image") != null) {
+            DownloadImageWithURLTask downloadTask = new DownloadImageWithURLTask(petImage);
+            downloadTask.execute(intent.getStringExtra("image"));
+        }
+        else if (intent.getParcelableExtra("imageBitMap") != null) {
+            petImage.setImageBitmap(intent.getParcelableExtra("imageBitMap"));
+        }
     }
 
     private class DownloadImageWithURLTask extends AsyncTask<String, Void, Bitmap> {

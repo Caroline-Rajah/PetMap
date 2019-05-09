@@ -11,8 +11,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.cmpe277.petMap.database.petEntity;
@@ -26,14 +29,14 @@ import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-
-    static int REQUEST_CAMERA_CAPTURE = 1;
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
@@ -51,24 +54,36 @@ public class MainActivity extends AppCompatActivity {
     private MainViewModel mViewModel;
     private BoomMenuButton bmb;
 
+    private ImageButton imgBtnHome;
+    private ImageButton imgBtnSearch;
+    private ImageButton imgBtnFeed;
+    private ImageButton imgBtnSettings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
+
+        imgBtnHome = findViewById(R.id.imageButtonHome);
+        imgBtnSearch = findViewById(R.id.imageButtonSearch);
+        imgBtnFeed = findViewById(R.id.imageButtonFeed);
+        imgBtnSettings = findViewById(R.id.imageButtonSettings);
+
         bmb = (BoomMenuButton) findViewById(R.id.bmb);
         bmb.setButtonEnum(ButtonEnum.Ham);
         bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_3_1);
         bmb.setButtonPlaceEnum(ButtonPlaceEnum.Vertical);
         String[] animals = {"Cats","Dogs","Birds"};
+        String[] subTexts = {"Looking for cats?", "Looking for dogs?", "Looking for birds?"};
         //ButtonPlaceEnum.Vertical.buttonNumber();
         //ButtonPlaceEnum.Vertical.buttonNumber();
         for (int i = 0; i < bmb.getPiecePlaceEnum().pieceNumber(); i++) {
             HamButton.Builder builder = new HamButton.Builder()
                     .normalImageRes(R.drawable.ic_grade_black_24dp)
                     .normalText(animals[i])
-                    .subNormalText("Little butter Doesn't fly, either!").listener(new OnBMClickListener() {
+                    .subNormalText(subTexts[i]).listener(new OnBMClickListener() {
                         @Override
                         public void onBoomButtonClick(int index) {
                             Toast.makeText(MainActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
@@ -97,6 +112,59 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+        String[] listSort = getResources().getStringArray(R.array.sortCriteria);
+        String[] listSize = getResources().getStringArray(R.array.Size);
+        String[] listAge = getResources().getStringArray(R.array.Age);
+        String[] listGender = getResources().getStringArray(R.array.Gender);
+        Comparator<petEntity> compareBySize = (petEntity o1, petEntity o2) ->
+                o1.getSize().compareTo( o2.getSize() );
+
+        Comparator<petEntity> compareByAge = (petEntity o1, petEntity o2) ->
+                o1.getAge().compareTo( o2.getAge() );
+
+        Comparator<petEntity> compareByName = (petEntity o1, petEntity o2) ->
+                o1.getName().compareTo( o2.getName() );
+
+        Comparator<petEntity> compareByGender = (petEntity o1, petEntity o2) ->
+                o1.getGender().compareTo( o2.getGender() );
+        imgBtnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+            }
+        });
+
+        imgBtnFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                mBuilder.setTitle("Sort according to");
+                mBuilder.setSingleChoiceItems(listSort, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (i == 0) {
+                            Collections.sort(petsData, compareByAge);
+                            mAdapter = new PetAdapter(petsData, MainActivity.this);
+                            mRecyclerView.setAdapter(mAdapter);
+                        }
+                        else if (i == 1) {
+                            Collections.sort(petsData, compareBySize);
+                            mAdapter = new PetAdapter(petsData, MainActivity.this);
+                            mRecyclerView.setAdapter(mAdapter);
+                        }
+                        else if (i == 2) {
+                            Collections.sort(petsData, compareByGender);
+                            mAdapter = new PetAdapter(petsData, MainActivity.this);
+                            mRecyclerView.setAdapter(mAdapter);
+                        }
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
+            }
+        });
 
     }
 
@@ -167,19 +235,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCamera(MenuItem menuItem) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_CAMERA_CAPTURE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CAMERA_CAPTURE) {
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(this, "OKAY", Toast.LENGTH_LONG).show();
-            } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            }
-        }
+        startActivity(new Intent(MainActivity.this, AddActivity.class));
     }
 
     private void deleteAllPets() {

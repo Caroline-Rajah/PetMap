@@ -6,11 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -18,8 +22,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cmpe277.petMap.ui.PetAdapter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -41,6 +48,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +70,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap googleMap;
     private GoogleApiClient googleApiClient;
     private String petLocation;
+    private String petName;
+
+    private ImageView petImageView;
+    private TextView txtPetName;
 
     private static final int DEFAULT_ZOOM = 15;
 
@@ -88,8 +100,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             mapView.onResume();
 
+            petImageView = findViewById(R.id.petImageView);
+            txtPetName = findViewById(R.id.txtPetName);
+
             Intent intent = getIntent();
             petLocation = intent.getStringExtra("address");
+            petName = intent.getStringExtra("name");
+
+            DownloadImage downloadTask = new DownloadImage(petImageView);
+            downloadTask.execute(intent.getStringExtra("image"));
+            txtPetName.setText(petName);
+
             /*Address address = new Address(Locale.US);
             try {
                 Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -164,6 +185,34 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 } else
                     Toast.makeText(this, "Location Permission Denied", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+        public DownloadImage(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String pathToFile = urls[0];
+            if(pathToFile==null){
+                return null;
+            }
+            Bitmap bitmap = null;
+            try {
+                InputStream in = new java.net.URL(pathToFile).openStream();
+                bitmap = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+        protected void onPostExecute(Bitmap result) {
+            if(result!=null) {
+                bmImage.setImageBitmap(result);
+            }
         }
     }
 

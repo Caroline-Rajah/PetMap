@@ -75,6 +75,8 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, MapActivity.class);
                 intent.putExtra("address",pet.getAddress());
+                intent.putExtra("name", pet.getName());
+                intent.putExtra("image", pet.getImage());
                 mContext.startActivity(intent);
             }
         });
@@ -94,7 +96,7 @@ public class PetAdapter extends RecyclerView.Adapter <PetAdapter.ViewHolder> {
             return null;
         }
     }
-    private class DownloadImageWithURLTask extends AsyncTask<String, Void, Bitmap> {
+    public static class DownloadImageWithURLTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
         public DownloadImageWithURLTask(ImageView bmImage) {
             this.bmImage = bmImage;
